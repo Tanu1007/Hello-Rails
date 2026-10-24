@@ -1,11 +1,11 @@
 module MoviesHelper
   def next_direction(column)
-    params[:sort] == column && params[:direction] != "desc" ? "desc" : "asc"
+    @sort == column && @direction == "asc" ? "desc" : "asc"
   end
 
   def sort_indicator(column)
-    return "" unless params[:sort] == column
+    return "" unless @sort == column
 
-    params[:direction] == "desc" ? "▼" : "▲"
+    @direction == "desc" ? "▼" : "▲"
   end
 end

@@ -5,18 +5,36 @@ body {
   color: #222;
 }
 
-h1 {
+h1, h2 {
   color: #1f3c88;
+}
+
+a {
+  color: #1f3c88;
+  margin-right: 10px;
+}
+
+.button,
+input[type="submit"] {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #1f3c88;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 table {
   width: 100%;
+  margin-top: 25px;
   border-collapse: collapse;
-  margin-top: 20px;
   background: white;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   border: 1px solid #ccc;
   text-align: left;
@@ -31,7 +49,7 @@ th a {
   text-decoration: none;
 }
 
-.sorted-column {
+th.sorted-column {
   background: #e67e22;
 }
 
@@ -39,11 +57,31 @@ tr:nth-child(even) {
   background: #f1f1f1;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 14px;
-  background: #1f3c88;
-  color: white;
-  text-decoration: none;
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  padding: 9px;
+  margin: 6px 0 16px;
+  border: 1px solid #aaa;
   border-radius: 4px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.notice {
+  padding: 10px;
+  background: #d4edda;
+  color: #155724;
+}
+
+.alert,
+#error_explanation {
+  padding: 10px;
+  background: #f8d7da;
+  color: #721c24;
 }
