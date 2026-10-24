@@ -1,16 +1,48 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Movies" %>
-
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
+<%= link_to "Add New Movie", new_movie_path, class: "button" %>
 
-<%= link_to "New movie", new_movie_path %>
+<table>
+  <thead>
+    <tr>
+      <th class="<%= 'sorted-column' if @sort == 'title' %>">
+        <%= link_to "Title #{sort_indicator('title')}",
+          movies_path(sort: "title", direction: next_direction("title")) %>
+      </th>
+
+      <th class="<%= 'sorted-column' if @sort == 'director' %>">
+        <%= link_to "Director #{sort_indicator('director')}",
+          movies_path(sort: "director", direction: next_direction("director")) %>
+      </th>
+
+      <th class="<%= 'sorted-column' if @sort == 'year' %>">
+        <%= link_to "Year #{sort_indicator('year')}",
+          movies_path(sort: "year", direction: next_direction("year")) %>
+      </th>
+
+      <th class="<%= 'sorted-column' if @sort == 'genre' %>">
+        <%= link_to "Genre #{sort_indicator('genre')}",
+          movies_path(sort: "genre", direction: next_direction("genre")) %>
+      </th>
+
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.genre %></td>
+        <td>
+          <%= link_to "Show", movie %>
+          <%= link_to "Edit", edit_movie_path(movie) %>
+          <%= link_to "Delete", movie, data: { turbo_method: :delete,
+              turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
